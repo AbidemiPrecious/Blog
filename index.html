@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://kit.fontawesome.com/f52cb7977d.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-md navbar-light shadow-sm" id="header">
+    <div class="container ">
+      <a class="navbar-brand" href="{{ url('/') }}">
+        <h1 class="h4 text-white">Blog</h1>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent"
+        aria-controls="navContent" aria-expanded="false" aria-label="">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse text-white" id="navContent">
+        <!-- Left Side Of Navbar -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        </ul>
+
+        <!-- Right Side Of Navbar -->
+        <ul class="navbar-nav ms-auto text-white">
+          <li class="nav-item">
+            <a class="nav-link " href="/#about_us">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/#contact_us">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('blog') }}">Blog</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Categories
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <!-- @forelse($categories as $category) -->
+              <li><a class="dropdown-item text-capitalize" href="{{ route('post.category', $category->id) }}">
+                  <!-- {{$category->name}} -->
+                  category
+                </a></li>
+              <!-- @empty
+       @endforelse -->
+            </ul>
+          </li>
+
+          <!-- @if(Route::has('login') && Auth::check()) -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <!-- {{ Auth::user()->name }} -->
+              Prince
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{{ route('dashboard') }}">
+                  <!-- {{ __('Dashboard') }} -->
+                  Dashboard
+                </a></li>
+              <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                 document.getElementById('logout-form').submit();">
+                  <!-- {{ __('Logout') }} -->Logout
+                </a></li>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+              </form>
+            </ul>
+          </li>
+          <!-- @elseif (Route::has('login') && !Auth::check()) -->
+          <li class="nav-item">
+            <a href="{{route('login')}}" class="nav-link"> Login</a>
+          </li>
+          <!-- @endif -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="py-5 bg-primary-slashed text-white">
+    <div class="container">
+      <div class="row d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+        <div class="col-md-6">
+          <h1 data-aos="fade-up"> Grow your business with a simple blog enabled webpage </h1>
+          <p class="pt-3">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure,
+            eveniet accusamus. Voluptatibus asperiores ut molestiae! Hic esse
+            nulla excepturi accusantium autem impedit eveniet magni aut!
+          </p>
+        </div>
+        <div class="col-md-6 hero-image d-flex align-items-center">
+          <img src="workplace-with-smartphone-laptop-black-table-top-view-copyspace-background.jpg"
+            class="w-100 imgages" alt="Solved the Problem Illustration by Manypixels Gallery on IconScout" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Features -->
+  <section class="container py-5 pt-5
+ bg-white 
+ text-dark">
+    <div class="pt-3 text-dark">
+      <div class="">
+        <!-- <div class="line line-white" data-aos="fade-left" data-aos-delay="100"></div> -->
+        <h1 class='p-0 m-0 about-h1' data-aos="fade-right" data-aos-delay="200">Why Choose us?</h1>
+        <div class="line-white" data-aos="fade-right" data-aos-delay="100"></div>
+      </div>
+    </div>
+    <!-- <div class="container">
+   </div> -->
+    <!-- <div class=" container my-5 justify-content-center align-items-center"> -->
+      <div class="row p-3 my-5 feature-content ">
+        <div class="col-12 col-md-4 p-5 text-center d-flex flex-column justify-content-center align-items-center feature-content1 ">
+          <h2 class="text-center py-3">Title</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga cupiditate asperiores officia sapiente
+            laborum itaque quas magni rerum perspiciatis blanditiis quam voluptates eligendi, amet illum?</p>
+        </div>
+        <div class="col-12 col-md-4 p-5 bg-primary-plain text-center d-flex flex-column justify-content-center align-items-center feature-content2">
+          <h2 class="text-center py-3">Title</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga cupiditate asperiores officia sapiente
+            laborum itaque quas magni rerum perspiciatis blanditiis quam voluptates eligendi, amet illum?</p>
+        </div>
+        <div class="col-12 col-md-4 p-5 text-center d-flex flex-column justify-content-center align-items-center feature-content3">
+          <h2 class="text-center py-3">Title</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga cupiditate asperiores officia sapiente
+            laborum itaque quas magni rerum perspiciatis blanditiis quam voluptates eligendi, amet illum?</p>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- About Us -->
+  <section class="container py-5 pt-5 text-dark">
+    <div class=" pb-5">
+      <div class="mx-5">
+        <!-- <div class="line" data-aos="fade-left" data-aos-delay="100"></div> -->
+        <h1 class='p-0 m-0 about-h1' data-aos="fade-right" data-aos-delay="200">About Us</h1>
+        <div class="line-white" data-aos="fade-right" data-aos-delay="100"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row text-dark py-5 d-flex justify-content-center align-items-center">
+        <div class="col-md-4" id="about">
+          <div class="card card-body rounded-0 card-about" data-aos="fade-right" data-aos-delay="300">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat necessitatibus perspiciatis velit vero
+              iure
+              molestias odio autem, tempora unde ullam provident natus quos consequuntur ipsa pariatur deleniti vel, quo
+              veritatis!
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium nesciunt tempora animi aut debitis
+              fugiat
+              impedit libero deleniti distinctio soluta, ducimus totam, iste repudiandae id eum possimus ut odio enim!
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad consequatur itaque nihil. Voluptate pariatur
+              harum
+              adipisci, cupiditate quod voluptatem quia amet exercitationem quos debitis! Voluptatum amet error
+              praesentium
+              saepe doloremque.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto, aliquam ipsam esse temporibus deleniti
+              harum
+              recusandae quas reiciendis modi tempora quo expedita, itaque enim commodi quam saepe aut cumque illum!
+            </p>
+          </div>
+        </div>
+        <div class="col-md-8 about-img" data-aos="fade-left" data-aos-delay="200">
+          <img src="workplace-with-smartphone-laptop-black-table-top-view-copyspace-background.jpg" class="w-100"
+            alt="Book Lovers Illustration by Manypixels Gallery on IconScout" />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class=" container-fluid py-5 bg-primary-plain text-white">
+    <div class="container mt-5 mb-5">
+      <div class="row g-5">
+        <div class="col-md-4">
+          <div class="card p-5 text-center px-4">
+            <div class="user-content">
+              <h5 class="mb-0">Bruce Hardy</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex
+                ea commodo consequat.</p>
+            </div>
+            <div class="ratings">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card p-5 text-center px-4 ccard">
+            <div class="user-content">
+              <h5 class="mb-0">Mark Smith</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex
+                ea commodo consequat.</p>
+            </div>
+
+            <div class="ratings">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+          <div class="card p-5 text-center px-4">
+            <div class="user-content">
+
+              <h5 class="mb-0">Veera Duncan</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex
+                ea commodo consequat.</p>
+
+            </div>
+
+            <div class="ratings">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Large Show -->
+  <section class="container py-5">
+    <!-- <div class="container">
+      <div id="showcase_img" style="background: url( {{$large_img}} );" data-aos="fade-right" data-aos-delay="200">
+        <div id="showcase_text" data-aos="fade-left" data-aos-delay="400">
+          <p class='p-0 m-0'>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo tenetur praesentium, pariatur laborum
+            molestiae quis
+            vel aliquid incidunt doloremque, magni obcaecati tempora debitis ipsam recusandae suscipit culpa corrupti
+            reiciendis soluta.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate hic, ex voluptatibus soluta quibusdam
+            dolorum
+            voluptas, non recusandae mollitia fugit nam excepturi consectetur ipsum repellat, magni est. Quae, veritatis
+            deserunt.
+          </p>
+          <div class="line" data-aos="fade-left" data-aos-delay="600"></div>
+        </div>
+      </div>
+    </div> -->
+    <div class="show">
+      <div class="row">
+        <div class="col-md-6 d-flex align-items-center">
+          <img src="workplace-with-smartphone-laptop-black-table-top-view-copyspace-background.jpg" class="w-100"
+            alt="Solved the Problem Illustration by Manypixels Gallery on IconScout" />
+        </div>
+
+        <div class="col-md-6 d-flex align-items-center">
+          <h4 class="subheading">GetLance is a great place to find more clients, and to run and grow your own freelance
+            business.</h4>
+        </div>
+      </div>
+  </section>
+
+
+  <!-- Contact Us -->
+  <!-- <section class="py-5 text-dark contact_us"> -->
+
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="heading text-center pb-5 mb-5">
+        <h2>Contact
+          <span> Us </span>
+        </h2>
+      </div>
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-5 ">
+          <div class="content pe-5 d-flex align-items-end justify-content-center flex-column" style="height:100%;">
+            <em class="content-em">
+              A108 Adam Street, New York, NY 535022 <br>
+              infoemail@example.com <br>
+              +1 5589 55488 55
+            </em>
+          </div>
+        </div>
+
+        
+        <div class="col-md-1"><div class="vl"></div></div>
+        <div class="col-md-5">
+          <form>
+            <div class="row">
+              <div class="col-sm-6">
+                <input type="text" class="form-control" placeholder="Name">
+              </div>
+              <div class="col-sm-6">
+                <input type="email" class="form-control" placeholder="Email">
+              </div>
+              <div class="col-sm-12">
+                <input type="text" class="form-control" placeholder="Subject">
+              </div>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" rows="5" id="comment" placeholder="Message"></textarea>
+            </div>
+            <button class="btn" type="submit">Send Now!</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+  </div>
+  </section>
+  </section>
+
+  <div class="top bg-primary-slashed-op "></div>
+
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="footer-widget ps-3">
+            <a href="#">
+              <img src="" class="logo" alt="">
+            </a>
+            <p class="text-white">Best solution for your it startup business, consecteturadipiscing elit. Scelerisque
+              amet
+              odio velit, auctor nam elit
+              nulla.</p>
+            <ul class="social-links">
+              <li>
+                <a href="#">
+                  <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa fa-linkedin" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa-brands fa-facebook-messenger"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="footer-widget ps-3">
+            <h3>Company</h3>
+            <ul class="links-list">
+              <li>
+                <a href="#">About Us</a>
+              </li>
+              <li>
+                <a href="#">Core Services</a>
+              </li>
+              <li>
+                <a href="#">Refund Policy</a>
+              </li>
+              <li>
+                <a href="#">FAQ's</a>
+              </li>
+              <li>
+                <a href="#">Reviews</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6">
+          <div class="footer-widget ps-3">
+            <h3>Company</h3>
+            <ul class="links-list">
+              <li>
+                <a href="#">About Us</a>
+              </li>
+              <li>
+                <a href="#">Core Services</a>
+              </li>
+              <li>
+                <a href="#">Refund Policy</a>
+              </li>
+              <li>
+                <a href="#">FAQ's</a>
+              </li>
+              <li>
+                <a href="#">Reviews</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- <div class="col-lg-2 col-md-3 col-sm-6">
+          <div class="footer-widget ps-3">
+            <h3>Company</h3>
+            <ul class="links-list">
+              <li>
+                <a href="#">About Us</a>
+              </li>
+              <li>
+                <a href="#">Core Services</a>
+              </li>
+              <li>
+                <a href="#">Refund Policy</a>
+              </li>
+              <li>
+                <a href="#">FAQ's</a>
+              </li>
+              <li>
+                <a href="#">Reviews</a>
+              </li>
+            </ul>
+          </div>
+        </div> -->
+        <div class="col-lg-3 col-md-6 col-sm-6 text-white">
+          <h3 class="">Newsletter</h3>
+          <p>Best solution for your it startup business, consecteturadipiscing elit.</p>
+          <input type="text" class="new-name" placeholder="Name">
+          <input type="email" class="new-name" placeholder="Email">
+          <button type="button" class="btn new-btn">Subscribe</button>
+        </div>
+      </div>
+      <div class="copyright text-white">
+        <p>Copyright 2022 Pakap. All Rights Reserved by
+          <a href="#">PCodes</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-image">
+      <img src="footer-image.png" alt="">
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
